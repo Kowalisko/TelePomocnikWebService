@@ -21,9 +21,9 @@ namespace TelePomocnikWebService.Controllers
             for (int i = 0; i < informations.Count; i++)
             {
                 if (i == informations.Count - 1)
-                    info += informations[i].DateMustContact.ToString("g") + ": " + informations[i].Telemarketer.Name + " " + informations[i].Telemarketer.Surname + " do " + informations[i].Contact.Name + " " + informations[i].Contact.Surname + " z informacją: " + informations[i].Information;
+                    info += informations[i].DateMustContact.ToString("MM/dd/yyyy HH:mm") + ": " + informations[i].Telemarketer.Name + " " + informations[i].Telemarketer.Surname + " do " + informations[i].Contact.Name + " " + informations[i].Contact.Surname + " z informacją: " + informations[i].Information;
                 else
-                    info += informations[i].DateMustContact.ToString("g") + ": " + informations[i].Telemarketer.Name + " " + informations[i].Telemarketer.Surname + " do " + informations[i].Contact.Name + " " + informations[i].Contact.Surname + " z informacją: " + informations[i].Information + "XYZINFOXYZ";                
+                    info += informations[i].DateMustContact.ToString("MM/dd/yyyy HH:mm") + ": " + informations[i].Telemarketer.Name + " " + informations[i].Telemarketer.Surname + " do " + informations[i].Contact.Name + " " + informations[i].Contact.Surname + " z informacją: " + informations[i].Information + "XYZINFOXYZ";                
             }
 
             return Json(info, JsonRequestBehavior.AllowGet);
