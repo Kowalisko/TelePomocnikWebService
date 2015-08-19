@@ -18,9 +18,9 @@ namespace TelePomocnikWebService.Controllers
             var informations = db.MustCallInformation.ToList();
             string info = null;
 
-            foreach (var item in informations)
+            for (int i = 0; i < informations.Count; i++)
             {
-                info += item.DateMustContact + ": " + item.Telemarketer.Name + " " + item.Telemarketer.Surname + " do " + item.Contact.Name + " " + item.Contact.Surname + " z informacją: " + item.Information + "XYZINFOXYZ";
+                info += informations[i].DateMustContact + ": " + informations[i].Telemarketer.Name + " " + informations[i].Telemarketer.Surname + " do " + informations[i].Contact.Name + " " + informations[i].Contact.Surname + " z informacją: " + informations[i].Information + (i != informations.Count ? "XYZINFOXYZ" : "");                
             }
 
             return Json(info, JsonRequestBehavior.AllowGet);
