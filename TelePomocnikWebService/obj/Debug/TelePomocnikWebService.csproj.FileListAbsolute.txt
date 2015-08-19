@@ -65,6 +65,5 @@ C:\Users\Rafał\Desktop\WEB\TelePomocnikWebService\TelePomocnikWebService\bin\ko
 C:\Users\Rafał\Desktop\WEB\TelePomocnikWebService\TelePomocnikWebService\bin\ru\System.Spatial.resources.dll
 C:\Users\Rafał\Desktop\WEB\TelePomocnikWebService\TelePomocnikWebService\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Rafał\Desktop\WEB\TelePomocnikWebService\TelePomocnikWebService\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\Rafał\Desktop\WEB\TelePomocnikWebService\TelePomocnikWebService\obj\Debug\TelePomocnikWebService.csprojResolveAssemblyReference.cache
 C:\Users\Rafał\Desktop\WEB\TelePomocnikWebService\TelePomocnikWebService\obj\Debug\TelePomocnikWebService.dll
 C:\Users\Rafał\Desktop\WEB\TelePomocnikWebService\TelePomocnikWebService\obj\Debug\TelePomocnikWebService.pdb
