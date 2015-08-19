@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TelePomocnikDbModelStoreContainer" CdmEntityContainer="TelePomocnikDbEntities">
+    <EntitySetMapping Name="Company">
+      <EntityTypeMapping TypeName="TelePomocnikDbModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="TelemarketerId" ColumnName="TelemarketerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contact">
+      <EntityTypeMapping TypeName="TelePomocnikDbModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="CommentFirst" ColumnName="CommentFirst" />
+          <ScalarProperty Name="CommentSecond" ColumnName="CommentSecond" />
+          <ScalarProperty Name="DateContactAdd" ColumnName="DateContactAdd" />
+          <ScalarProperty Name="DateLastContact" ColumnName="DateLastContact" />
+          <ScalarProperty Name="TelemarketerId" ColumnName="TelemarketerId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="ColorString" ColumnName="ColorString" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactHistory">
+      <EntityTypeMapping TypeName="TelePomocnikDbModel.ContactHistory">
+        <MappingFragment StoreEntitySet="ContactHistory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+          <ScalarProperty Name="ContactDate" ColumnName="ContactDate" />
+          <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+          <ScalarProperty Name="TelemarketerId" ColumnName="TelemarketerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Event">
+      <EntityTypeMapping TypeName="TelePomocnikDbModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Members" ColumnName="Members" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="MoreInfo" ColumnName="MoreInfo" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MustCallInformation">
+      <EntityTypeMapping TypeName="TelePomocnikDbModel.MustCallInformation">
+        <MappingFragment StoreEntitySet="MustCallInformation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Information" ColumnName="Information" />
+          <ScalarProperty Name="DateMustContact" ColumnName="DateMustContact" />
+          <ScalarProperty Name="WhoMustContact" ColumnName="WhoMustContact" />
+          <ScalarProperty Name="ToWhoMustContact" ColumnName="ToWhoMustContact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="TelePomocnikDbModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="TelePomocnikDbModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Telemarketer">
+      <EntityTypeMapping TypeName="TelePomocnikDbModel.Telemarketer">
+        <MappingFragment StoreEntitySet="Telemarketer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ContactInterestedInEvent" TypeName="TelePomocnikDbModel.ContactInterestedInEvent" StoreEntitySet="ContactInterestedInEvent">
+      <EndProperty Name="Contact">
+        <ScalarProperty Name="Id" ColumnName="ContactId" />
+      </EndProperty>
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="EventId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ContactTakePartEvent" TypeName="TelePomocnikDbModel.ContactTakePartEvent" StoreEntitySet="ContactTakePartEvent">
+      <EndProperty Name="Contact">
+        <ScalarProperty Name="Id" ColumnName="ContactId" />
+      </EndProperty>
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="EventId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

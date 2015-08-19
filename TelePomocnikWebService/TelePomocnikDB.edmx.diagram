@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd2c58c2a0784f6abdcc7f337e7bde62" Name="Diagram1">
+        <EntityTypeShape EntityType="TelePomocnikDbModel.Company" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelePomocnikDbModel.Contact" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelePomocnikDbModel.ContactHistory" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelePomocnikDbModel.Event" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelePomocnikDbModel.MustCallInformation" Width="1.5" PointX="10.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelePomocnikDbModel.Role" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelePomocnikDbModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelePomocnikDbModel.Telemarketer" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="TelePomocnikDbModel.FK_Company_Telemarketer1" ManuallyRouted="false" />
+        <AssociationConnector Association="TelePomocnikDbModel.FK_Contact_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="TelePomocnikDbModel.FK_Contact_Telemarketer" ManuallyRouted="false" />
+        <AssociationConnector Association="TelePomocnikDbModel.FK_ContactHistory_Contact" ManuallyRouted="false" />
+        <AssociationConnector Association="TelePomocnikDbModel.FK_MustCallInformation_Contact" ManuallyRouted="false" />
+        <AssociationConnector Association="TelePomocnikDbModel.FK_ContactHistory_Telemarketer" ManuallyRouted="false" />
+        <AssociationConnector Association="TelePomocnikDbModel.FK_MustCallInformation_Telemarketer" ManuallyRouted="false" />
+        <AssociationConnector Association="TelePomocnikDbModel.FK_Telemarketer_Telemarketer" ManuallyRouted="false" />
+        <AssociationConnector Association="TelePomocnikDbModel.ContactInterestedInEvent" ManuallyRouted="false" />
+        <AssociationConnector Association="TelePomocnikDbModel.ContactTakePartEvent" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

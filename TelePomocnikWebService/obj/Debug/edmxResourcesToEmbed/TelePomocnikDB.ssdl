@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TelePomocnikDbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TelePomocnikDbModelStoreContainer">
+    <EntitySet Name="Company" EntityType="TelePomocnikDbModel.Store.Company" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Contact" EntityType="TelePomocnikDbModel.Store.Contact" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContactHistory" EntityType="TelePomocnikDbModel.Store.ContactHistory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContactInterestedInEvent" EntityType="TelePomocnikDbModel.Store.ContactInterestedInEvent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContactTakePartEvent" EntityType="TelePomocnikDbModel.Store.ContactTakePartEvent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Event" EntityType="TelePomocnikDbModel.Store.Event" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MustCallInformation" EntityType="TelePomocnikDbModel.Store.MustCallInformation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Role" EntityType="TelePomocnikDbModel.Store.Role" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="TelePomocnikDbModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Telemarketer" EntityType="TelePomocnikDbModel.Store.Telemarketer" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Company_Telemarketer1" Association="TelePomocnikDbModel.Store.FK_Company_Telemarketer1">
+      <End Role="Telemarketer" EntitySet="Telemarketer" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contact" Association="TelePomocnikDbModel.Store.FK_contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="ContactTakePartEvent" EntitySet="ContactTakePartEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contact_Company" Association="TelePomocnikDbModel.Store.FK_Contact_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Contact" EntitySet="Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contact_Telemarketer" Association="TelePomocnikDbModel.Store.FK_Contact_Telemarketer">
+      <End Role="Telemarketer" EntitySet="Telemarketer" />
+      <End Role="Contact" EntitySet="Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contact2" Association="TelePomocnikDbModel.Store.FK_contact2">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="ContactInterestedInEvent" EntitySet="ContactInterestedInEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContactHistory_Contact" Association="TelePomocnikDbModel.Store.FK_ContactHistory_Contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="ContactHistory" EntitySet="ContactHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContactHistory_Telemarketer" Association="TelePomocnikDbModel.Store.FK_ContactHistory_Telemarketer">
+      <End Role="Telemarketer" EntitySet="Telemarketer" />
+      <End Role="ContactHistory" EntitySet="ContactHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_event" Association="TelePomocnikDbModel.Store.FK_event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="ContactTakePartEvent" EntitySet="ContactTakePartEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_event2" Association="TelePomocnikDbModel.Store.FK_event2">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="ContactInterestedInEvent" EntitySet="ContactInterestedInEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MustCallInformation_Contact" Association="TelePomocnikDbModel.Store.FK_MustCallInformation_Contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="MustCallInformation" EntitySet="MustCallInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MustCallInformation_Telemarketer" Association="TelePomocnikDbModel.Store.FK_MustCallInformation_Telemarketer">
+      <End Role="Telemarketer" EntitySet="Telemarketer" />
+      <End Role="MustCallInformation" EntitySet="MustCallInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Telemarketer_Telemarketer" Association="TelePomocnikDbModel.Store.FK_Telemarketer_Telemarketer">
+      <End Role="Telemarketer" EntitySet="Telemarketer" />
+      <End Role="Telemarketer1" EntitySet="Telemarketer" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Street" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="PostCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="TelemarketerId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Job" Type="nvarchar" MaxLength="50" />
+    <Property Name="CommentFirst" Type="nvarchar" MaxLength="300" />
+    <Property Name="CommentSecond" Type="nvarchar" MaxLength="300" />
+    <Property Name="DateContactAdd" Type="datetime" Nullable="false" />
+    <Property Name="DateLastContact" Type="datetime" />
+    <Property Name="TelemarketerId" Type="uniqueidentifier" />
+    <Property Name="CompanyId" Type="uniqueidentifier" />
+    <Property Name="ColorString" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ContactHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Info" Type="nvarchar(max)" />
+    <Property Name="ContactDate" Type="datetime" Nullable="false" />
+    <Property Name="ContactId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TelemarketerId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContactInterestedInEvent">
+    <Key>
+      <PropertyRef Name="ContactId" />
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="ContactId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EventId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContactTakePartEvent">
+    <Key>
+      <PropertyRef Name="ContactId" />
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="ContactId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EventId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="300" />
+    <Property Name="Members" Type="int" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="MoreInfo" Type="nvarchar" MaxLength="500" />
+    <Property Name="Place" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MustCallInformation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Information" Type="nvarchar(max)" />
+    <Property Name="DateMustContact" Type="datetime" Nullable="false" />
+    <Property Name="WhoMustContact" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ToWhoMustContact" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Telemarketer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="60" />
+    <Property Name="Login" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="110" />
+    <Property Name="ManagerId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Company_Telemarketer1">
+    <End Role="Telemarketer" Type="TelePomocnikDbModel.Store.Telemarketer" Multiplicity="0..1" />
+    <End Role="Company" Type="TelePomocnikDbModel.Store.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Telemarketer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="TelemarketerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contact">
+    <End Role="Contact" Type="TelePomocnikDbModel.Store.Contact" Multiplicity="1" />
+    <End Role="ContactTakePartEvent" Type="TelePomocnikDbModel.Store.ContactTakePartEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContactTakePartEvent">
+        <PropertyRef Name="ContactId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contact_Company">
+    <End Role="Company" Type="TelePomocnikDbModel.Store.Company" Multiplicity="0..1" />
+    <End Role="Contact" Type="TelePomocnikDbModel.Store.Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contact_Telemarketer">
+    <End Role="Telemarketer" Type="TelePomocnikDbModel.Store.Telemarketer" Multiplicity="0..1" />
+    <End Role="Contact" Type="TelePomocnikDbModel.Store.Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Telemarketer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="TelemarketerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contact2">
+    <End Role="Contact" Type="TelePomocnikDbModel.Store.Contact" Multiplicity="1" />
+    <End Role="ContactInterestedInEvent" Type="TelePomocnikDbModel.Store.ContactInterestedInEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContactInterestedInEvent">
+        <PropertyRef Name="ContactId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContactHistory_Contact">
+    <End Role="Contact" Type="TelePomocnikDbModel.Store.Contact" Multiplicity="1" />
+    <End Role="ContactHistory" Type="TelePomocnikDbModel.Store.ContactHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContactHistory">
+        <PropertyRef Name="ContactId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContactHistory_Telemarketer">
+    <End Role="Telemarketer" Type="TelePomocnikDbModel.Store.Telemarketer" Multiplicity="1" />
+    <End Role="ContactHistory" Type="TelePomocnikDbModel.Store.ContactHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Telemarketer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContactHistory">
+        <PropertyRef Name="TelemarketerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_event">
+    <End Role="Event" Type="TelePomocnikDbModel.Store.Event" Multiplicity="1" />
+    <End Role="ContactTakePartEvent" Type="TelePomocnikDbModel.Store.ContactTakePartEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContactTakePartEvent">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_event2">
+    <End Role="Event" Type="TelePomocnikDbModel.Store.Event" Multiplicity="1" />
+    <End Role="ContactInterestedInEvent" Type="TelePomocnikDbModel.Store.ContactInterestedInEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContactInterestedInEvent">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MustCallInformation_Contact">
+    <End Role="Contact" Type="TelePomocnikDbModel.Store.Contact" Multiplicity="1" />
+    <End Role="MustCallInformation" Type="TelePomocnikDbModel.Store.MustCallInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MustCallInformation">
+        <PropertyRef Name="ToWhoMustContact" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MustCallInformation_Telemarketer">
+    <End Role="Telemarketer" Type="TelePomocnikDbModel.Store.Telemarketer" Multiplicity="1" />
+    <End Role="MustCallInformation" Type="TelePomocnikDbModel.Store.MustCallInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Telemarketer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MustCallInformation">
+        <PropertyRef Name="WhoMustContact" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Telemarketer_Telemarketer">
+    <End Role="Telemarketer" Type="TelePomocnikDbModel.Store.Telemarketer" Multiplicity="1" />
+    <End Role="Telemarketer1" Type="TelePomocnikDbModel.Store.Telemarketer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Telemarketer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Telemarketer1">
+        <PropertyRef Name="ManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
