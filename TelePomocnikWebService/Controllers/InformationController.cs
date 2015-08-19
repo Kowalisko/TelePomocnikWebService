@@ -16,14 +16,10 @@ namespace TelePomocnikWebService.Controllers
             TelePomocnikDbEntities db = new TelePomocnikDbEntities();
             DateTime from = DateTime.Now.AddDays(-2);
             var informations = db.MustCallInformation.ToList();
-            var info = "";
 
-            foreach (var item in informations)
-            {
-                info += item.DateMustContact + ": " + item.Telemarketer.Name + " " + item.Telemarketer.Surname + " do " + item.Contact.Name + " " + item.Contact.Surname + " z informacją: " + item.Information + "\n";
-            }
+            string jsonString = JsonHelper.JsonSerializer<MustCallInformation>(db.MustCallInformation.First());
 
-            return Json(info, JsonRequestBehavior.AllowGet);
+            return Json(jsonString, JsonRequestBehavior.AllowGet);
         }
     }
 }
