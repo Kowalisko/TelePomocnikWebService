@@ -16,7 +16,7 @@ namespace TelePomocnikWebService.Controllers
             TelePomocnikDbEntities db = new TelePomocnikDbEntities();
             DateTime from = DateTime.Now.AddDays(-2);
             var informations = db.MustCallInformation.ToList();
-            string info = null;
+            string info = String.Empty;
 
             for (int i = 0; i < informations.Count; i++)
             {
