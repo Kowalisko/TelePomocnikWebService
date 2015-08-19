@@ -20,7 +20,7 @@ namespace TelePomocnikWebService.Controllers
 
             foreach (var item in informations)
             {
-                info += item.DateMustContact + ": " + item.Telemarketer.Name + " " + item.Telemarketer.Surname + " do " + item.Contact.Name + " " + item.Contact.Surname + " z informacją: " + item.Information;
+                info += item.DateMustContact + ": " + item.Telemarketer.Name + " " + item.Telemarketer.Surname + " do " + item.Contact.Name + " " + item.Contact.Surname + " z informacją: " + item.Information + "\n";
             }
 
             return Json(info, JsonRequestBehavior.AllowGet);
