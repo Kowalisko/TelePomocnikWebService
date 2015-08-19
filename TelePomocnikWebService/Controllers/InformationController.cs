@@ -15,15 +15,15 @@ namespace TelePomocnikWebService.Controllers
         {
             TelePomocnikDbEntities db = new TelePomocnikDbEntities();
             DateTime from = DateTime.Now.AddDays(-2);
-            var informations = db.MustCallInformation.ToList();
+            var informations = db.MustCallInformation.Where(m => m.DateMustContact > from).OrderBy(m => m.DateMustContact).ToList();
             string info = String.Empty;
 
             for (int i = 0; i < informations.Count; i++)
             {
                 if (i == informations.Count - 1)
-                    info += informations[i].DateMustContact + ": " + informations[i].Telemarketer.Name + " " + informations[i].Telemarketer.Surname + " do " + informations[i].Contact.Name + " " + informations[i].Contact.Surname + " z informacją: " + informations[i].Information;
-                else 
-                    info += informations[i].DateMustContact + ": " + informations[i].Telemarketer.Name + " " + informations[i].Telemarketer.Surname + " do " + informations[i].Contact.Name + " " + informations[i].Contact.Surname + " z informacją: " + informations[i].Information + "XYZINFOXYZ";                
+                    info += informations[i].DateMustContact.ToString("g") + ": " + informations[i].Telemarketer.Name + " " + informations[i].Telemarketer.Surname + " do " + informations[i].Contact.Name + " " + informations[i].Contact.Surname + " z informacją: " + informations[i].Information;
+                else
+                    info += informations[i].DateMustContact.ToString("g") + ": " + informations[i].Telemarketer.Name + " " + informations[i].Telemarketer.Surname + " do " + informations[i].Contact.Name + " " + informations[i].Contact.Surname + " z informacją: " + informations[i].Information + "XYZINFOXYZ";                
             }
 
             return Json(info, JsonRequestBehavior.AllowGet);
